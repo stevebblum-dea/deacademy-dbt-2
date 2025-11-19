@@ -15,6 +15,16 @@ models:
       - name: emp_salary
         tests:
           - value_check
+
+  - name: customer
+    description: "DBT Model for customer table"
+    columns:
+      - name: customer_id
+        tests:
+          - unique
+          - not_null
+  - name: customer_view
+    description: "DBT Model for the customer view"
    
 sources:
   - name: employee
@@ -22,4 +32,9 @@ sources:
     schema: PUBLIC
     tables:
       - name: EMPLOYEE_RAW
+  - name: customer
+    database: DBT_DB
+    schema: PUBLIC
+    tables:
+      - name: CUSTOMER_SRC
 

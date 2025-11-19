@@ -25,6 +25,13 @@ models:
           - not_null
   - name: customer_view
     description: "DBT Model for the customer view"
+  - name: sales
+    description: "DBT Model for sales table"
+    columns:
+      - name: sale_id
+        tests:
+          - unique
+          - not_null
    
 sources:
   - name: employee
@@ -37,4 +44,9 @@ sources:
     schema: PUBLIC
     tables:
       - name: CUSTOMER_SRC
+  - name: sales
+    database: DBT_DB
+    schema: PUBLIC
+    tables:
+      - name: SALES_SRC
 

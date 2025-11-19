@@ -2,7 +2,7 @@
     config
     (
         materialized='incremental',
-        incremental_stategy = 'append'
+        incremental_strategy = 'append'
     )
 }}
 
@@ -20,7 +20,7 @@ with sales_src as
         FROM {{source('sales','SALES_SRC')}}
 
         {% if is_incremental() %}
-        WHERE CREATED_AT > (SELECT MAX(INSERT_DTS) FROM {{this}})
+        WHERE CREATED_AT > (SELECT COALESCE(MAX(CREATED_AT),'1/1/1900') FROM {{this}})
         {% endif %}
 )
 

@@ -35,6 +35,10 @@ models:
     description: "DBT Model for the clean Orders"
   - name: final_order
     description: "DBT Model for the final orders"     
+  - name: concat_addr
+    description: "DBT Model for address concat"
+  - name: concat_name
+    description: "DBT Model for name concat"
    
 sources:
   - name: employee
